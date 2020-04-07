@@ -8,8 +8,15 @@ logging.getLogger('scrapy').setLevel(logging.WARNING)
 
 class get_pull_reqSpider(scrapy.Spider):
     name = "get_pull_req"
+
+    custom_settings = {
+        'RANDOMIZE_DOWNLOAD_DELAY': True,
+        'DOWNLOAD_DELAY': 2
+    }
+
     start_urls = [
-        'https://github.com/iis-powp-2020/powp_jobs2d/pulls?page=1&q=is%3Aclosed'
+        'https://github.com/iis-powp-2020/powp_jobs2d/pulls?page=1&q=is%3Aclosed',
+        'https://github.com/iis-powp-2020/powp_jobs2d/pulls'
     ]
 
     def parse_item(self, response):
